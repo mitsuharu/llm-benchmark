@@ -1,0 +1,28 @@
+name: validate-benchmark
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "benchmarks/**"
+      - "rubrics/**"
+      - "results/**"
+      - "skills/**"
+      - "scripts/**"
+      - "tests/**"
+      - "VERSION"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: python3 scripts/validate.py
+      - run: git diff --check HEAD^ HEAD
