@@ -90,7 +90,7 @@
       "category": "成果物生成",
       "weight": 0,
       "prompt": "questions/creative-01.md",
-      "time_limit_seconds": 180
+      "time_limit_seconds": 1800
     }
   ]
 }
