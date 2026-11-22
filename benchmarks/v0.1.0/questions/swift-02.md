@@ -1,0 +1,1 @@
+UIKitのWKWebViewからJavaScriptメッセージを受け取る画面を実装してください。画面破棄時の循環参照防止、不正なbodyの検証、UI更新のMainActor制約を説明してください。
