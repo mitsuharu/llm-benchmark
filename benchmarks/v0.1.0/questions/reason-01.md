@@ -1,0 +1,1 @@
+WKWebViewがiOSの一部端末でdidFinish直後にJavaScript関数undefinedとなる。再読み込みで直る場合がある。原因候補、観測方法、修正方針を優先順に説明してください。固定sleepを恒久対策にしないこと。

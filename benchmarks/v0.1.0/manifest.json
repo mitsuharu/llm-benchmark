@@ -1,0 +1,96 @@
+{
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "ja-01",
+      "category": "日本語理解",
+      "weight": 8,
+      "prompt": "questions/ja-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "ja-02",
+      "category": "日本語理解",
+      "weight": 7,
+      "prompt": "questions/ja-02.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "swift-01",
+      "category": "Swift / iOS",
+      "weight": 10,
+      "prompt": "questions/swift-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "swift-02",
+      "category": "Swift / iOS",
+      "weight": 10,
+      "prompt": "questions/swift-02.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "rn-01",
+      "category": "React Native",
+      "weight": 8,
+      "prompt": "questions/rn-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "rn-02",
+      "category": "React Native",
+      "weight": 7,
+      "prompt": "questions/rn-02.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "review-01",
+      "category": "コードレビュー",
+      "weight": 8,
+      "prompt": "questions/review-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "review-02",
+      "category": "コードレビュー",
+      "weight": 7,
+      "prompt": "questions/review-02.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "design-01",
+      "category": "アーキテクチャ設計",
+      "weight": 8,
+      "prompt": "questions/design-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "design-02",
+      "category": "アーキテクチャ設計",
+      "weight": 7,
+      "prompt": "questions/design-02.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "reason-01",
+      "category": "推論・問題解決",
+      "weight": 10,
+      "prompt": "questions/reason-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "follow-01",
+      "category": "指示遵守",
+      "weight": 10,
+      "prompt": "questions/follow-01.md",
+      "time_limit_seconds": null
+    },
+    {
+      "id": "creative-01",
+      "category": "成果物生成",
+      "weight": 0,
+      "prompt": "questions/creative-01.md",
+      "time_limit_seconds": 1800
+    }
+  ]
+}
