@@ -7,3 +7,9 @@
 - [問題一覧](benchmarks/v0.1.0/manifest.json)
 - [測定結果](results/README.md)
 - [開発ルール](AGENTS.md)
+
+## 結果投稿・公開
+
+- [投稿用Skill](skills/submit-benchmark-result/SKILL.md)
+- [バージョン管理](docs/versioning.md)
+- [Pages設定](docs/pages.md)

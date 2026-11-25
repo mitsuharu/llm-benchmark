@@ -21,7 +21,15 @@ for p in (root / "results").glob("v*/*/result.json"):
     m = json.loads((root / "benchmarks" / p.parent.parent.name / "manifest.json").read_text())
     ids = {c["id"] for c in m["cases"]}
     assert data["model"] and isinstance(data["cases"], list)
+    assert len({row["case_id"] for row in data["cases"]}) == len(data["cases"])
+    weights = {c["id"]: c["weight"] for c in m["cases"]}
     for row in data["cases"]:
+        score = row.get("score")
+        assert score is None or (type(score) in (int, float) and 0 <= score <= (weights[row["case_id"]] or 100))
+        if score is not None:
+            assert row.get("evaluation_type") in ("self", "independent")
+        speed = row.get("generation_tokens_per_second")
+        assert speed is None or (type(speed) in (int, float) and speed >= 0)
         assert row["case_id"] in ids
         for key in ("elapsed_seconds", "ttft_seconds", "input_tokens", "output_tokens"):
             v = row[key]

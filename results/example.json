@@ -21,5 +21,6 @@
       "status": "pending",
       "evaluation_type": null
     }
-  ]
+  ],
+  "benchmark_commit": null
 }
