@@ -1,7 +1,7 @@
 name: publish-pages
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - "results/**"
       - "benchmarks/**"
