@@ -37,3 +37,13 @@ python scripts/runtime.py --version BUILD_TAG --asset ASSET.zip --sha256 EXPECTE
 ```
 
 取得は計測前に行う。追加のGPU依存ライブラリが必要な配布物やZIP以外は手動準備する。取得した llama-server を起動してから Runner に接続する。`--model-file` はローカルGGUFのSHA-256を記録する（APIが実際にそのファイルを使用することは利用者が確認する）。
+
+### 自動起動モード
+
+既存バイナリとGGUFを再利用する。
+
+```sh
+python scripts/runner.py run --server-binary /path/to/llama-server --model-file /path/to/model.gguf --model MODEL_ID --context-length 4096 --gpu-layers 99 --case ja-01
+```
+
+または `--server-binary` の代わりに `--auto-prepare --runtime-version BUILD_TAG --asset ASSET.zip --archive-sha256 SHA256` を指定する。ローカルサーバーの起動時間は推論時間と別に記録し、終了時に停止する。実機検証は未実施。モデルの自動取得は行わない。
