@@ -13,3 +13,17 @@
 - [投稿用Skill](skills/submit-benchmark-result/SKILL.md)
 - [バージョン管理](docs/versioning.md)
 - [Pages設定](docs/pages.md)
+
+## Runner（初期実装）
+
+Python 3.10以上。起動済みOpenAI互換APIを使用する。
+
+```sh
+python scripts/runner.py doctor --submit
+python scripts/runner.py run --base-url http://localhost:8080/v1 --model MODEL_ID --runtime llamacpp --case ja-01
+```
+
+結果は local-runs に保存。採点・投稿は別Skillで行う。Strata / Project Maya は互換APIが利用可能な場合に接続できる。実機検証、自動取得・起動、厳密な総時間制限、反復計測は今後の対応。
+
+- [実行Skill](skills/run-llm-benchmark/SKILL.md)
+- [採点Skill](skills/evaluate-benchmark-result/SKILL.md)
