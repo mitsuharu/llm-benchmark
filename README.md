@@ -23,7 +23,17 @@ python scripts/runner.py doctor --submit
 python scripts/runner.py run --base-url http://localhost:8080/v1 --model MODEL_ID --runtime llamacpp --case ja-01
 ```
 
-結果は local-runs に保存。採点・投稿は別Skillで行う。Strata / Project Maya は互換APIが利用可能な場合に接続できる。実機検証、自動取得・起動、厳密な総時間制限、反復計測は今後の対応。
+結果は local-runs に保存。採点・投稿は別Skillで行う。Strata / Project Maya は互換APIが利用可能な場合に接続できる。実機検証、自動起動は今後の対応。既定3回の独立リクエストを行い中央値と個別結果を保存する。タイムアウト時は子プロセスを終了する（部分回答の保存は未対応）。
 
 - [実行Skill](skills/run-llm-benchmark/SKILL.md)
 - [採点Skill](skills/evaluate-benchmark-result/SKILL.md)
+
+### llama.cpp の準備
+
+公式リリースの固定タグ・ZIP名・信頼できるSHA-256を指定する。
+
+```sh
+python scripts/runtime.py --version BUILD_TAG --asset ASSET.zip --sha256 EXPECTED_SHA256
+```
+
+取得は計測前に行う。追加のGPU依存ライブラリが必要な配布物やZIP以外は手動準備する。取得した llama-server を起動してから Runner に接続する。`--model-file` はローカルGGUFのSHA-256を記録する（APIが実際にそのファイルを使用することは利用者が確認する）。
