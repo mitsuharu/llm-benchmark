@@ -57,3 +57,14 @@
 - 受験者に採点基準を渡さない。問題ID、版、実測条件を記録する。
 - 未測定は null とする。生成コードは通常のCIで実行しない。
 - 公開結果から機密情報を除去する。
+
+## PR・CI・デプロイの完了条件
+
+- 作業開始時とPR作成前にデフォルトブランチを取得し、Workflowのブランチ名（例: `main`）との整合性を確認する。
+- PRマージ前に変更差分・未解決レビュー・最新head SHAのCI結果を確認する。必要なCIが失敗・未実行・確認不能の場合はマージせず、原因と未確認事項を報告する。単にPRがmergeableであることをCI成功と見なさない。
+- PRのCIだけでなく、**マージ後に起動するpush、release、workflow_dispatch等の関連Workflowも確認する**。マージは作業完了ではない。
+- GitHub Pagesを変更した場合は、`publish-pages` の `build` と `deploy` がともに成功したことを実行ID・ログ・対象コミットSHAで確認し、公開URLをHTTPで開いて内容を確認する。Pagesが未設定なら先に [Settings → Pages](https://github.com/mitsuharu/llm-benchmark/settings/pages) の Source が GitHub Actions かを確認する。
+- デプロイで404などのエラーが発生したら失敗したジョブのログを取得し、設定不足・権限・Workflowの問題を切り分ける。コード修正だけで解消したと推測しない。
+- マージ後のWorkflowを利用可能なツールで確認できない場合、**成功したと主張しない**。必要なrun URLや追加権限を依頼し、未確認と明示する。確認できるところまでログを検証する。
+- 変更ごとにPR番号・マージSHA・CI run URL・デプロイrun URL・公開URLの確認結果を報告する。失敗時は原因と再検証の結果を報告し、成功を確認するまで完了扱いにしない。
+- GitHub Pages等の外部設定はWorkflowでは検証しきれない場合がある。環境準備をREADME / docsに明示し、初回公開の受入試験に含める。
