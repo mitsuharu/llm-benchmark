@@ -47,3 +47,9 @@ python scripts/runner.py run --server-binary /path/to/llama-server --model-file 
 ```
 
 または `--server-binary` の代わりに `--auto-prepare --runtime-version BUILD_TAG --asset ASSET.zip --archive-sha256 SHA256` を指定する。ローカルサーバーの起動時間は推論時間と別に記録し、終了時に停止する。実機検証は未実施。モデルの自動取得は行わない。
+
+### 結果投稿の準備
+
+独立採点済みJSONを確認し、機密情報を除去した後、`python scripts/submission.py PATH/result.json --run-id RUN_ID --reviewed` で公開用ディレクトリに配置・検証する。回答やログは自動コピーしない。PR作成は投稿Skillに従い利用者の承認後に行う。
+
+ハードウェア情報はRunnerを実行したホストの情報。NVIDIA GPUは nvidia-smi で検出する。AMD/Intel GPUやリモート推論機の情報は手動指定する。
