@@ -9,6 +9,9 @@ import sys
 import time
 import urllib.request
 import uuid
+import multiprocessing
+import hashlib
+import statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -82,8 +85,44 @@ def measure(base_url, model, prompt, timeout, temperature, max_tokens):
         generation_tokens_per_second=timings.get("predicted_per_second"),
         score=None, evaluation_type=None, status=status)
 
+def worker(conn, params):
+    try:
+        conn.send(measure(*params))
+    finally:
+        conn.close()
+
+def bounded_measure(*params):
+    timeout = params[3]
+    ctx = multiprocessing.get_context("spawn")
+    receiver, sender = ctx.Pipe(duplex=False)
+    process = ctx.Process(target=worker, args=(sender, params))
+    start = time.monotonic()
+    process.start()
+    sender.close()
+    try:
+        if receiver.poll(max(0, timeout - (time.monotonic() - start))):
+            try:
+                return receiver.recv()
+            except EOFError:
+                status = "error"
+        else:
+            status = "timeout"
+        return "", dict(elapsed_seconds=time.monotonic()-start, ttft_seconds=None,
+            input_tokens=None, output_tokens=None, prompt_tokens_per_second=None,
+            generation_tokens_per_second=None, score=None, evaluation_type=None, status=status)
+    finally:
+        receiver.close()
+        if process.is_alive():
+            process.terminate()
+        process.join(2)
+        if process.is_alive():
+            process.kill()
+            process.join()
+
 def run(args):
-    version = (ROOT / "VERSION").read_text().strip()
+    version = args.version or (ROOT / "VERSION").read_text().strip()
+    if not __import__("re").fullmatch(r"[0-9]+\\.[0-9]+\\.[0-9]+", version):
+        raise SystemExit("Invalid benchmark version")
     folder = ROOT / "benchmarks" / ("v" + version)
     cases = json.loads((folder / "manifest.json").read_text())["cases"]
     if args.case:
@@ -93,15 +132,30 @@ def run(args):
     out = ROOT / "local-runs" / uuid.uuid4().hex
     out.mkdir(parents=True)
     result = dict(benchmark_version=version, benchmark_commit=command("git", "-C", str(ROOT), "rev-parse", "HEAD"),
-        runner_version="0.1.0", model=args.model, quantization=args.quantization, gpu=args.gpu,
+        runner_version="0.2.0", model=args.model, quantization=args.quantization, gpu=args.gpu,
         runtime=args.runtime, runtime_version=args.runtime_version, backend=args.backend,
         environment={"os": platform.system(), "release": platform.release(), "architecture": platform.machine()},
         settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens}, cases=[])
+    if args.model_file:
+        with args.model_file.open("rb") as stream:
+            digest = hashlib.sha256()
+            for block in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(block)
+        result["model_sha256"] = digest.hexdigest()
     for case in cases:
         prompt = (folder / case["prompt"]).read_text(encoding="utf-8")
-        answer, row = measure(args.base_url, args.model, prompt, case["time_limit_seconds"] or args.timeout, args.temperature, args.max_tokens)
-        (out / (case["id"] + ".md")).write_text(answer, encoding="utf-8")
-        result["cases"].append(dict(case_id=case["id"], **row))
+        rows = []
+        for i in range(args.repeat):
+            answer, row = bounded_measure(args.base_url, args.model, prompt, case["time_limit_seconds"] or args.timeout, args.temperature, args.max_tokens)
+            (out / f"{case['id']}-{i+1}.md").write_text(answer, encoding="utf-8")
+            rows.append(row)
+            (out / f"{case['id']}-repeats.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
+        aggregate = dict(rows[0])
+        for key in ("elapsed_seconds", "ttft_seconds", "input_tokens", "output_tokens", "prompt_tokens_per_second", "generation_tokens_per_second"):
+            values = [row[key] for row in rows]
+            aggregate[key] = statistics.median(values) if all(v is not None for v in values) else None
+        aggregate["status"] = rows[0]["status"] if all(row["status"] == rows[0]["status"] for row in rows) else "mixed"
+        result["cases"].append(dict(case_id=case["id"], repeat=args.repeat, **aggregate))
         (out / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(out)
     return 0
@@ -121,7 +175,12 @@ def main():
     r.add_argument("--context-length", type=int)
     r.add_argument("--max-tokens", type=int, default=8192)
     r.add_argument("--timeout", type=float, default=300)
+    r.add_argument("--version")
+    r.add_argument("--repeat", type=int, default=3)
+    r.add_argument("--model-file", type=Path)
     args = parser.parse_args()
+    if args.action == "run" and (args.repeat < 1 or args.timeout <= 0 or args.max_tokens < 1):
+        parser.error("repeat, timeout and max-tokens must be positive")
     return doctor(args.submit) if args.action == "doctor" else run(args)
 
 if __name__ == "__main__":
