@@ -11,7 +11,10 @@ on:
       - "site/**"
       - "tests/**"
       - "VERSION"
-      - ".github/workflows/validate.yml"
+      - ".github/workflows/**"
+      - "AGENTS.md"
+      - "README.md"
+      - "docs/**"
   workflow_dispatch:
 permissions:
   contents: read
