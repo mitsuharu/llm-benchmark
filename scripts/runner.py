@@ -12,6 +12,8 @@ import uuid
 import multiprocessing
 import hashlib
 import statistics
+import re
+import math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -120,8 +122,27 @@ def bounded_measure(*params):
             process.join()
 
 def run(args):
+    if args.server_binary or args.auto_prepare:
+        if __package__:
+            from .server import server
+            from .runtime import prepare
+        else:
+            from server import server
+            from runtime import prepare
+        binary = args.server_binary
+        if args.auto_prepare:
+            binary = prepare(args.runtime_version, args.asset, args.archive_sha256, args.cache)
+        args.runtime = "llamacpp"
+        args.runtime_version = command(str(Path(binary).resolve()), "--version") or args.runtime_version
+        with server(binary, args.model_file, args.context_length, args.gpu_layers, args.startup_timeout) as (url, startup):
+            args.base_url = url
+            args.startup_seconds = startup
+            return run_cases(args)
+    return run_cases(args)
+
+def run_cases(args):
     version = args.version or (ROOT / "VERSION").read_text().strip()
-    if not __import__("re").fullmatch(r"[0-9]+\\.[0-9]+\\.[0-9]+", version):
+    if not re.fullmatch(r"[0-9]+[.][0-9]+[.][0-9]+", version):
         raise SystemExit("Invalid benchmark version")
     folder = ROOT / "benchmarks" / ("v" + version)
     cases = json.loads((folder / "manifest.json").read_text())["cases"]
@@ -135,7 +156,7 @@ def run(args):
         runner_version="0.2.0", model=args.model, quantization=args.quantization, gpu=args.gpu,
         runtime=args.runtime, runtime_version=args.runtime_version, backend=args.backend,
         environment={"os": platform.system(), "release": platform.release(), "architecture": platform.machine()},
-        settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens}, cases=[])
+        settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens, "gpu_layers": args.gpu_layers if args.server_binary or args.auto_prepare else None}, cases=[], startup_seconds=getattr(args, "startup_seconds", None))
     if args.model_file:
         with args.model_file.open("rb") as stream:
             digest = hashlib.sha256()
@@ -166,8 +187,16 @@ def main():
     d = sub.add_parser("doctor")
     d.add_argument("--submit", action="store_true")
     r = sub.add_parser("run")
-    for name in ("model", "base-url"):
-        r.add_argument("--" + name, required=True)
+    r.add_argument("--model", required=True)
+    mode = r.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--base-url")
+    mode.add_argument("--server-binary", type=Path)
+    mode.add_argument("--auto-prepare", action="store_true")
+    r.add_argument("--asset")
+    r.add_argument("--archive-sha256")
+    r.add_argument("--cache", default=os.environ.get("LLM_BENCHMARK_CACHE", str(Path.home() / ".cache" / "llm-benchmark" / "runtimes")))
+    r.add_argument("--gpu-layers", type=int, default=99)
+    r.add_argument("--startup-timeout", type=float, default=180)
     for name in ("runtime-version", "backend", "quantization", "gpu", "case"):
         r.add_argument("--" + name)
     r.add_argument("--runtime", default="openai-compatible")
@@ -181,6 +210,18 @@ def main():
     args = parser.parse_args()
     if args.action == "run" and (args.repeat < 1 or args.timeout <= 0 or args.max_tokens < 1):
         parser.error("repeat, timeout and max-tokens must be positive")
+    if args.action == "run":
+        if not math.isfinite(args.timeout) or not math.isfinite(args.startup_timeout) or args.startup_timeout <= 0:
+            parser.error("timeouts must be finite and positive")
+        if args.server_binary or args.auto_prepare:
+            if not args.model_file or not args.model_file.is_file():
+                parser.error("managed mode requires an existing --model-file")
+            if args.context_length is None:
+                args.context_length = 4096
+            if args.context_length < 1:
+                parser.error("context-length must be positive")
+        if args.auto_prepare and not all((args.runtime_version, args.asset, args.archive_sha256)):
+            parser.error("auto-prepare requires runtime-version, asset and archive-sha256")
     return doctor(args.submit) if args.action == "doctor" else run(args)
 
 if __name__ == "__main__":
