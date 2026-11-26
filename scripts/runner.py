@@ -54,7 +54,8 @@ def measure(base_url, model, prompt, timeout, temperature, max_tokens):
                     continue
                 data = line[5:].strip()
                 if data == b"[DONE]":
-                    status = "completed"
+                    if status != "truncated":
+                        status = "completed"
                     break
                 event = json.loads(data)
                 if event.get("error"):
