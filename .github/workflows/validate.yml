@@ -29,6 +29,7 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 2
+      - run: python3 -m unittest discover -s tests
       - run: python3 scripts/validate.py
       - run: python3 scripts/build_site.py
       - run: git diff --check HEAD^ HEAD
