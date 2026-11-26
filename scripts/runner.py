@@ -16,6 +16,11 @@ import re
 import math
 from pathlib import Path
 
+if __package__:
+    from .hardware import detect
+else:
+    from hardware import detect
+
 ROOT = Path(__file__).resolve().parents[1]
 
 def command(*args):
@@ -32,6 +37,7 @@ def doctor(submit=False):
         checks["github_permission"] = command("gh", "repo", "view", "mitsuharu/llm-benchmark", "--json", "viewerPermission", "--jq", ".viewerPermission")
     ready = bool(checks["git"] and checks.get("github_login") and checks.get("github_permission") in ("WRITE", "MAINTAIN", "ADMIN"))
     checks["submission_ready"] = ready
+    checks["host"] = detect()
     print(json.dumps(checks, ensure_ascii=False, indent=2))
     return 0 if not submit or ready else 1
 
@@ -155,7 +161,7 @@ def run_cases(args):
     result = dict(benchmark_version=version, benchmark_commit=command("git", "-C", str(ROOT), "rev-parse", "HEAD"),
         runner_version="0.2.0", model=args.model, quantization=args.quantization, gpu=args.gpu,
         runtime=args.runtime, runtime_version=args.runtime_version, backend=args.backend,
-        environment={"os": platform.system(), "release": platform.release(), "architecture": platform.machine()},
+        environment=detect(), environment_scope="runner_host",
         settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens, "gpu_layers": args.gpu_layers if args.server_binary or args.auto_prepare else None}, cases=[], startup_seconds=getattr(args, "startup_seconds", None))
     if args.model_file:
         with args.model_file.open("rb") as stream:
