@@ -3,20 +3,16 @@
 このリポジトリは、LLMの能力評価用ベンチマークと Agent Skills、測定結果を管理する。
 説明文と手順は原則日本語で書き、Skill名・パス・コマンドは英語表記を使う。
 
-## Pull Request
+## ブランチ・コミット・PR
 
-- すべての変更は作業用ブランチで行い、Pull Request経由で追加する。
-- デフォルトブランチへ直接コミット・pushしない。PRのマージは別途依頼がある場合だけ行う。
 - 作業開始時にブランチと未コミットの変更を確認し、他の作業を上書きしない。
-
-## Commit
-
-- 機能・目的・論理的な変更単位で分割し、異なる目的を巨大なコミットにまとめない。
-- 各コミットが単体で目的を説明できるようにする。関連するSkill一覧の更新はSkill追加と同じコミットに含めてよい。
-- Conventional Commitsに近い形式を使う。例:
-  - `chore: initialize agent skills repository`
-  - `feat: add skill creation skill`
-  - `docs: document skill creation workflow`
+- すべての変更は作業用ブランチで行い、PR 経由で追加する。ブランチ名は用途に応じて `feature/<内容>`、`fix/<内容>`、`docs/<内容>`、`ci/<内容>`、`refactor/<内容>`、`results/<run-id>` などを使う。
+- デフォルトブランチへの直接コミット・push を禁止する。PR のマージは別途依頼がある場合だけ行う。
+- コミットは目的・機能ごとに分け、各コミットの目的が単体で分かるようにする。関連する実装とテスト、Skill の追加と一覧の更新は同じコミットに含めてよい。
+- コミットメッセージは Conventional Commits 形式を使う。接頭辞の例は `feat:`、`fix:`、`docs:`、`test:`、`ci:`、`refactor:`、`chore:`、`results:`。本文は日本語でよい。
+- エージェントが変更を作成・編集した場合、またはコミットを作成した場合は、コミットメッセージ末尾に空行を挟んで、実際に作業したエージェント名とそのエージェント用のメールアドレスを `Co-authored-by: 名前 <メールアドレス>` の形式で記載する。Codex の例は `Co-authored-by: Codex <noreply@openai.com>`。
+- エージェントが作るマージコミットや squash merge で作られるコミットにも、該当する `Co-authored-by` を引き継ぐ。コミット作成前とマージ前に、付け忘れがないことを確認する。
+- PR は目的ごとに分け、説明に目的、変更内容、テスト内容、要確認事項を記載する。
 
 ## Skill development
 
