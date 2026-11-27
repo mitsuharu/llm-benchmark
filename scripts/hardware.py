@@ -1,5 +1,6 @@
 """Best-effort local host metadata. Unknown values remain null."""
 import csv
+import ctypes
 import os
 import platform
 import subprocess
@@ -8,6 +9,38 @@ def query(*args):
     try:
         return subprocess.check_output(args, text=True, stderr=subprocess.DEVNULL, timeout=10).strip()
     except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def windows_memory():
+    class MemoryStatus(ctypes.Structure):
+        _fields_ = [
+            ("length", ctypes.c_uint32),
+            ("load", ctypes.c_uint32),
+            ("total_physical", ctypes.c_uint64),
+            ("available_physical", ctypes.c_uint64),
+            ("total_page_file", ctypes.c_uint64),
+            ("available_page_file", ctypes.c_uint64),
+            ("total_virtual", ctypes.c_uint64),
+            ("available_virtual", ctypes.c_uint64),
+            ("available_extended_virtual", ctypes.c_uint64),
+        ]
+
+    status = MemoryStatus(length=ctypes.sizeof(MemoryStatus))
+    if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):
+        return status.total_physical
+    return None
+
+
+def windows_cpu():
+    import winreg
+
+    try:
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                            r"HARDWARE\DESCRIPTION\System\CentralProcessor\0") as key:
+            name, _ = winreg.QueryValueEx(key, "ProcessorNameString")
+            return name.strip() or None
+    except OSError:
         return None
 
 def detect():
@@ -27,9 +60,8 @@ def detect():
         value = query("sysctl", "-n", "hw.memsize")
         ram = int(value) if value and value.isdigit() else None
     elif system == "Windows":
-        value = query("powershell", "-NoProfile", "-Command", "(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory")
-        ram = int(value) if value and value.isdigit() else None
-        cpu = query("powershell", "-NoProfile", "-Command", "(Get-CimInstance Win32_Processor).Name") or cpu
+        ram = windows_memory()
+        cpu = windows_cpu() or cpu
     gpus = []
     output = query("nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader,nounits")
     if output:

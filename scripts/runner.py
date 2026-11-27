@@ -147,11 +147,11 @@ def run(args):
     return run_cases(args)
 
 def run_cases(args):
-    version = args.version or (ROOT / "VERSION").read_text().strip()
+    version = args.version or (ROOT / "VERSION").read_text(encoding="utf-8").strip()
     if not re.fullmatch(r"[0-9]+[.][0-9]+[.][0-9]+", version):
         raise SystemExit("Invalid benchmark version")
     folder = ROOT / "benchmarks" / ("v" + version)
-    cases = json.loads((folder / "manifest.json").read_text())["cases"]
+    cases = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))["cases"]
     if args.case:
         cases = [c for c in cases if c["id"] == args.case]
     if not cases:
