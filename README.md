@@ -28,6 +28,8 @@ python scripts/runner.py run --base-url http://localhost:8080/v1 --model MODEL_I
 - [実行Skill](skills/run-llm-benchmark/SKILL.md)
 - [採点Skill](skills/evaluate-benchmark-result/SKILL.md)
 
+Unsloth Desktop などストリーミング時の使用量リクエストに対応する API では、`--include-usage` を指定するとトークン数を要求できます。API が速度を返す場合は、その値も記録します。認証が必要な場合は実行環境の `BENCHMARK_API_KEY` を使います。
+
 ### llama.cpp の準備
 
 公式リリースの固定タグ・ZIP名・信頼できるSHA-256を指定する。
