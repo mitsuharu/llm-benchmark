@@ -1,0 +1,1561 @@
+{
+  "benchmark_version": "0.1.0",
+  "benchmark_commit": "314d758409a1a9c1939f0c3ffa0df30edd9816e6",
+  "runner_version": "0.2.0",
+  "model": "unsloth/gemma-4-12B-it-qat-GGUF",
+  "quantization": null,
+  "gpu": null,
+  "runtime": "Unsloth Desktop",
+  "runtime_version": null,
+  "backend": null,
+  "environment": {
+    "os": "Windows",
+    "release": "11",
+    "architecture": "AMD64",
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor",
+    "logical_cpus": 16,
+    "ram_bytes": 67736862720,
+    "detected_nvidia_gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 5060 Ti",
+        "vram_bytes": 17103323136,
+        "driver": "621.40",
+        "source": "nvidia-smi"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5060 Ti",
+        "vram_bytes": 17103323136,
+        "driver": "621.40",
+        "source": "nvidia-smi"
+      }
+    ]
+  },
+  "environment_scope": "runner_host",
+  "settings": {
+    "temperature": 0,
+    "context_length": null,
+    "max_tokens": 8192,
+    "include_usage": true,
+    "gpu_layers": null,
+    "prompt_mode": "question_only",
+    "thinking": null
+  },
+  "cases": [
+    {
+      "case_id": "ja-01",
+      "repeat": 3,
+      "elapsed_seconds": 4.5323858000001565,
+      "ttft_seconds": 4.226800999999796,
+      "input_tokens": 86,
+      "output_tokens": 563,
+      "prompt_tokens_per_second": 2060.57120950738,
+      "generation_tokens_per_second": 126.4268291228925,
+      "score": 2.6666666666666665,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 4.512834500000281,
+          "ttft_seconds": 4.20693140000003,
+          "input_tokens": 86,
+          "output_tokens": 563,
+          "prompt_tokens_per_second": 2059.140428588531,
+          "generation_tokens_per_second": 126.4268291228925,
+          "score": 2.6666666666666665,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "A・Bの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "C・Dの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 3,
+              "rating": 0,
+              "reason": "余計なキーはないが、Markdown のコードフェンスを含み、回答全体は JSON として解析できない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 4.553328699999838,
+          "ttft_seconds": 4.245739699999831,
+          "input_tokens": 86,
+          "output_tokens": 563,
+          "prompt_tokens_per_second": 2060.916868364926,
+          "generation_tokens_per_second": 125.827928740196,
+          "score": 2.6666666666666665,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "A・Bの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "C・Dの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 3,
+              "rating": 0,
+              "reason": "余計なキーはないが、Markdown のコードフェンスを含み、回答全体は JSON として解析できない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 4.5323858000001565,
+          "ttft_seconds": 4.226800999999796,
+          "input_tokens": 86,
+          "output_tokens": 563,
+          "prompt_tokens_per_second": 2060.57120950738,
+          "generation_tokens_per_second": 126.44625719078715,
+          "score": 2.6666666666666665,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "A・Bの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "C・Dの表示可否は正しい。期待する真偽値ではなく文字列。"
+            },
+            {
+              "item": 3,
+              "rating": 0,
+              "reason": "余計なキーはないが、Markdown のコードフェンスを含み、回答全体は JSON として解析できない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ja-02",
+      "repeat": 3,
+      "elapsed_seconds": 15.669081500000175,
+      "ttft_seconds": 6.970261200000095,
+      "input_tokens": 54,
+      "output_tokens": 1669,
+      "prompt_tokens_per_second": 1437.1257485029937,
+      "generation_tokens_per_second": 106.96435419309246,
+      "score": 5.833333333333334,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 15.669081500000175,
+          "ttft_seconds": 6.972066299999824,
+          "input_tokens": 54,
+          "output_tokens": 1669,
+          "prompt_tokens_per_second": 1437.1257485029937,
+          "generation_tokens_per_second": 106.93519624531805,
+          "score": 5.833333333333334,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "未保存の変更は反映されないと説明したが、確定データを限定せず、永続ストレージ一般に反映されないと断定した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "下書きの保持・復元と確定保存を区別した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "保存のタイミング、期限、復元方法を確認事項に挙げた。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 15.64330389999941,
+          "ttft_seconds": 6.966628000000128,
+          "input_tokens": 54,
+          "output_tokens": 1669,
+          "prompt_tokens_per_second": 1441.5376401494927,
+          "generation_tokens_per_second": 107.10626296167183,
+          "score": 5.833333333333334,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "未保存の変更は反映されないと説明したが、確定データを限定せず、永続ストレージ一般に反映されないと断定した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "下書きの保持・復元と確定保存を区別した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "保存のタイミング、期限、復元方法を確認事項に挙げた。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 15.671333400000549,
+          "ttft_seconds": 6.970261200000095,
+          "input_tokens": 54,
+          "output_tokens": 1669,
+          "prompt_tokens_per_second": 1428.1935995768315,
+          "generation_tokens_per_second": 106.96435419309246,
+          "score": 5.833333333333334,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "未保存の変更は反映されないと説明したが、確定データを限定せず、永続ストレージ一般に反映されないと断定した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "下書きの保持・復元と確定保存を区別した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "保存のタイミング、期限、復元方法を確認事項に挙げた。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "swift-01",
+      "repeat": 3,
+      "elapsed_seconds": 24.511977600000137,
+      "ttft_seconds": 9.784582799999953,
+      "input_tokens": 73,
+      "output_tokens": 2747,
+      "prompt_tokens_per_second": 1789.5665816826827,
+      "generation_tokens_per_second": 112.40555794316167,
+      "score": 7.5,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 24.511977600000137,
+          "ttft_seconds": 9.772059300000365,
+          "input_tokens": 73,
+          "output_tokens": 2747,
+          "prompt_tokens_per_second": 1778.8391247136803,
+          "generation_tokens_per_second": 112.36665411100932,
+          "score": 7.5,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "MainActor の ViewModel、Sendable な依存、値型の戻り値を使用。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Task をキャンセルして成功結果をガードしたが世代チェックがなく、古いタスクの通常エラーで状態を上書きできる。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "空文字と通常エラーを処理したが、古いエラーや現行の CancellationError に対する状態遷移に欠ける。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "プロトコルとイニシャライザによる注入、モックの例がある。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 24.512134900000092,
+          "ttft_seconds": 9.790717500000028,
+          "input_tokens": 73,
+          "output_tokens": 2747,
+          "prompt_tokens_per_second": 1796.967309964553,
+          "generation_tokens_per_second": 112.40555794316167,
+          "score": 7.5,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "MainActor の ViewModel、Sendable な依存、値型の戻り値を使用。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Task をキャンセルして成功結果をガードしたが世代チェックがなく、古いタスクの通常エラーで状態を上書きできる。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "空文字と通常エラーを処理したが、古いエラーや現行の CancellationError に対する状態遷移に欠ける。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "プロトコルとイニシャライザによる注入、モックの例がある。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 24.494161099999474,
+          "ttft_seconds": 9.784582799999953,
+          "input_tokens": 73,
+          "output_tokens": 2747,
+          "prompt_tokens_per_second": 1789.5665816826827,
+          "generation_tokens_per_second": 112.43052522333386,
+          "score": 7.5,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "MainActor の ViewModel、Sendable な依存、値型の戻り値を使用。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Task をキャンセルして成功結果をガードしたが世代チェックがなく、古いタスクの通常エラーで状態を上書きできる。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "空文字と通常エラーを処理したが、古いエラーや現行の CancellationError に対する状態遷移に欠ける。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "プロトコルとイニシャライザによる注入、モックの例がある。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "swift-02",
+      "repeat": 3,
+      "elapsed_seconds": 18.926373400000557,
+      "ttft_seconds": 7.338918700000249,
+      "input_tokens": 55,
+      "output_tokens": 2144,
+      "prompt_tokens_per_second": 1450.574955164047,
+      "generation_tokens_per_second": 113.74233513067098,
+      "score": 3.75,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 18.861966000000393,
+          "ttft_seconds": 7.299129600000015,
+          "input_tokens": 55,
+          "output_tokens": 2144,
+          "prompt_tokens_per_second": 1446.1886355867582,
+          "generation_tokens_per_second": 114.0938850522476,
+          "score": 3.75,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0,
+              "reason": "self の強参照登録を残し、循環参照を解消できていない。"
+            },
+            {
+              "item": 2,
+              "rating": 0,
+              "reason": "解除は deinit にしか実装されておらず、その循環で deinit 自体が呼ばれない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "辞書型と必須文字列の型を guard と Codable で検証している。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "UI 更新を MainActor に載せたが、コールバックがバックグラウンドで呼ばれるという前提に根拠がなく、deinit 側の actor 制約にも対処していない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 18.926373400000557,
+          "ttft_seconds": 7.338918700000249,
+          "input_tokens": 55,
+          "output_tokens": 2144,
+          "prompt_tokens_per_second": 1456.6835288820619,
+          "generation_tokens_per_second": 113.74233513067098,
+          "score": 3.75,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0,
+              "reason": "self の強参照登録を残し、循環参照を解消できていない。"
+            },
+            {
+              "item": 2,
+              "rating": 0,
+              "reason": "解除は deinit にしか実装されておらず、その循環で deinit 自体が呼ばれない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "辞書型と必須文字列の型を guard と Codable で検証している。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "UI 更新を MainActor に載せたが、コールバックがバックグラウンドで呼ばれるという前提に根拠がなく、deinit 側の actor 制約にも対処していない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 19.04391679999935,
+          "ttft_seconds": 7.362148599999273,
+          "input_tokens": 55,
+          "output_tokens": 2144,
+          "prompt_tokens_per_second": 1450.574955164047,
+          "generation_tokens_per_second": 112.99355789084949,
+          "score": 3.75,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0,
+              "reason": "self の強参照登録を残し、循環参照を解消できていない。"
+            },
+            {
+              "item": 2,
+              "rating": 0,
+              "reason": "解除は deinit にしか実装されておらず、その循環で deinit 自体が呼ばれない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "辞書型と必須文字列の型を guard と Codable で検証している。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "UI 更新を MainActor に載せたが、コールバックがバックグラウンドで呼ばれるという前提に根拠がなく、deinit 側の actor 制約にも対処していない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "rn-01",
+      "repeat": 3,
+      "elapsed_seconds": 19.71794680000039,
+      "ttft_seconds": 7.7008850000001985,
+      "input_tokens": 52,
+      "output_tokens": 2247,
+      "prompt_tokens_per_second": 1378.944577035269,
+      "generation_tokens_per_second": 114.37528813431753,
+      "score": 6.0,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 19.718573600000127,
+          "ttft_seconds": 7.7008850000001985,
+          "input_tokens": 52,
+          "output_tokens": 2247,
+          "prompt_tokens_per_second": 1378.944577035269,
+          "generation_tokens_per_second": 114.35353796405082,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "router.push に pathname と params を渡している。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "useLocalSearchParams に型を指定して配列へ正規化している。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "未指定と空の単一文字列は処理するが、直リンクで受け取った配列の空要素や空白だけの値を除かない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "2画面と実在 API を示したが、入力画面で React.useState の React が未インポートで、提示された構成に型ファイルの置き場所がない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 19.71794680000039,
+          "ttft_seconds": 7.7183358000002045,
+          "input_tokens": 52,
+          "output_tokens": 2247,
+          "prompt_tokens_per_second": 1359.9748927712105,
+          "generation_tokens_per_second": 114.37528813431753,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "router.push に pathname と params を渡している。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "useLocalSearchParams に型を指定して配列へ正規化している。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "未指定と空の単一文字列は処理するが、直リンクで受け取った配列の空要素や空白だけの値を除かない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "2画面と実在 API を示したが、入力画面で React.useState の React が未インポートで、提示された構成に型ファイルの置き場所がない。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 19.61464109999997,
+          "ttft_seconds": 7.678601000000526,
+          "input_tokens": 52,
+          "output_tokens": 2247,
+          "prompt_tokens_per_second": 1384.083044982699,
+          "generation_tokens_per_second": 114.91665216990883,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "router.push に pathname と params を渡している。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "useLocalSearchParams に型を指定して配列へ正規化している。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "未指定と空の単一文字列は処理するが、直リンクで受け取った配列の空要素や空白だけの値を除かない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "2画面と実在 API を示したが、入力画面で React.useState の React が未インポートで、提示された構成に型ファイルの置き場所がない。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "rn-02",
+      "repeat": 3,
+      "elapsed_seconds": 22.614816600000267,
+      "ttft_seconds": 10.647366000000147,
+      "input_tokens": 60,
+      "output_tokens": 2579,
+      "prompt_tokens_per_second": 1564.2516359465028,
+      "generation_tokens_per_second": 114.40649346050174,
+      "score": 5.25,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 22.597271600000568,
+          "ttft_seconds": 10.647366000000147,
+          "input_tokens": 60,
+          "output_tokens": 2579,
+          "prompt_tokens_per_second": 1560.5493133583022,
+          "generation_tokens_per_second": 114.48672775526876,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "effect の cleanup で AbortController を中断し、アンマウントと再検索に対応した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "finally は signal.aborted で保護しているが、成功・通常エラーの更新には同等のガードがない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "loading とエラー状態はあるが、任意の fetcher が null 等を throw すると catch 内の err.name で再度失敗する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "React と標準の AbortController を使い、ジェネリックな fetcher と戻り値を型付けした。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 22.614816600000267,
+          "ttft_seconds": 10.644079800000327,
+          "input_tokens": 60,
+          "output_tokens": 2579,
+          "prompt_tokens_per_second": 1572.7804136412487,
+          "generation_tokens_per_second": 114.40649346050174,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "effect の cleanup で AbortController を中断し、アンマウントと再検索に対応した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "finally は signal.aborted で保護しているが、成功・通常エラーの更新には同等のガードがない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "loading とエラー状態はあるが、任意の fetcher が null 等を throw すると catch 内の err.name で再度失敗する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "React と標準の AbortController を使い、ジェネリックな fetcher と戻り値を型付けした。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 22.639943700000003,
+          "ttft_seconds": 10.663975100000243,
+          "input_tokens": 60,
+          "output_tokens": 2579,
+          "prompt_tokens_per_second": 1564.2516359465028,
+          "generation_tokens_per_second": 114.27994392746832,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "effect の cleanup で AbortController を中断し、アンマウントと再検索に対応した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "finally は signal.aborted で保護しているが、成功・通常エラーの更新には同等のガードがない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "loading とエラー状態はあるが、任意の fetcher が null 等を throw すると catch 内の err.name で再度失敗する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "React と標準の AbortController を使い、ジェネリックな fetcher と戻り値を型付けした。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "review-01",
+      "repeat": 3,
+      "elapsed_seconds": 19.54190120000021,
+      "ttft_seconds": 12.32647900000029,
+      "input_tokens": 89,
+      "output_tokens": 2214,
+      "prompt_tokens_per_second": 1936.9300746479792,
+      "generation_tokens_per_second": 113.77697235312115,
+      "score": 6.0,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 19.561404199999743,
+          "ttft_seconds": 12.344498600000406,
+          "input_tokens": 89,
+          "output_tokens": 2214,
+          "prompt_tokens_per_second": 1936.9300746479792,
+          "generation_tokens_per_second": 113.77697235312115,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "VM が callback を保持し、callback が VM を保持する循環を正しく指摘した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "バックグラウンド側と callback 側の count += 1 が競合し得ると指摘した。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "actor と Sendable に言及するが、元の GCD クロージャで非 Sendable な self を捕捉する Swift 6 の問題を具体的に指摘していない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "弱参照と同期化を提案したが、キュー案の Sendable 制約が未解決で、推奨 actor 案は callback の強参照循環を再導入する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 19.489431900000454,
+          "ttft_seconds": 12.29126079999969,
+          "input_tokens": 89,
+          "output_tokens": 2214,
+          "prompt_tokens_per_second": 1949.6593572696006,
+          "generation_tokens_per_second": 114.04856747681175,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "VM が callback を保持し、callback が VM を保持する循環を正しく指摘した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "バックグラウンド側と callback 側の count += 1 が競合し得ると指摘した。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "actor と Sendable に言及するが、元の GCD クロージャで非 Sendable な self を捕捉する Swift 6 の問題を具体的に指摘していない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "弱参照と同期化を提案したが、キュー案の Sendable 制約が未解決で、推奨 actor 案は callback の強参照循環を再導入する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 19.54190120000021,
+          "ttft_seconds": 12.32647900000029,
+          "input_tokens": 89,
+          "output_tokens": 2214,
+          "prompt_tokens_per_second": 1933.4796115661186,
+          "generation_tokens_per_second": 113.6976542524721,
+          "score": 6.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "VM が callback を保持し、callback が VM を保持する循環を正しく指摘した。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "バックグラウンド側と callback 側の count += 1 が競合し得ると指摘した。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "actor と Sendable に言及するが、元の GCD クロージャで非 Sendable な self を捕捉する Swift 6 の問題を具体的に指摘していない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "弱参照と同期化を提案したが、キュー案の Sendable 制約が未解決で、推奨 actor 案は callback の強参照循環を再導入する。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "review-02",
+      "repeat": 3,
+      "elapsed_seconds": 15.669994700000643,
+      "ttft_seconds": 6.846728099999382,
+      "input_tokens": 72,
+      "output_tokens": 1758,
+      "prompt_tokens_per_second": 1770.259638080252,
+      "generation_tokens_per_second": 112.70389012518919,
+      "score": 6.125,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 15.67312689999926,
+          "ttft_seconds": 6.846728099999382,
+          "input_tokens": 72,
+          "output_tokens": 1758,
+          "prompt_tokens_per_second": 1755.6693489392833,
+          "generation_tokens_per_second": 112.70389012518919,
+          "score": 6.125,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "空の依存配列では query 更新時に再取得しないと指摘し、[query] を指定した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "cleanup で fetch を中断する修正を示したが、依存配列を直す前のコードでも query 更新で複数リクエストが走るように説明した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "URLSearchParams でクエリ値をエンコードしている。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "実装は response.ok を明示的に検査し、通信・パース例外を catch する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 15.650806999999986,
+          "ttft_seconds": 6.837851899999805,
+          "input_tokens": 72,
+          "output_tokens": 1758,
+          "prompt_tokens_per_second": 1774.4042191389212,
+          "generation_tokens_per_second": 112.89231525240073,
+          "score": 6.125,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "空の依存配列では query 更新時に再取得しないと指摘し、[query] を指定した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "cleanup で fetch を中断する修正を示したが、依存配列を直す前のコードでも query 更新で複数リクエストが走るように説明した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "URLSearchParams でクエリ値をエンコードしている。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "実装は response.ok を明示的に検査し、通信・パース例外を catch する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 15.669994700000643,
+          "ttft_seconds": 6.852189200000794,
+          "input_tokens": 72,
+          "output_tokens": 1758,
+          "prompt_tokens_per_second": 1770.259638080252,
+          "generation_tokens_per_second": 112.67331779121307,
+          "score": 6.125,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "空の依存配列では query 更新時に再取得しないと指摘し、[query] を指定した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "cleanup で fetch を中断する修正を示したが、依存配列を直す前のコードでも query 更新で複数リクエストが走るように説明した。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "URLSearchParams でクエリ値をエンコードしている。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "実装は response.ok を明示的に検査し、通信・パース例外を catch する。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "design-01",
+      "repeat": 3,
+      "elapsed_seconds": 18.561596100000315,
+      "ttft_seconds": 6.545805499999915,
+      "input_tokens": 95,
+      "output_tokens": 1953,
+      "prompt_tokens_per_second": 2048.561694052702,
+      "generation_tokens_per_second": 105.62375616799179,
+      "score": 5.0,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 18.55647619999945,
+          "ttft_seconds": 6.546117400000185,
+          "input_tokens": 95,
+          "output_tokens": 1953,
+          "prompt_tokens_per_second": 2055.1204949595467,
+          "generation_tokens_per_second": 105.84088796167259,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "SwiftUI、ViewModel、Repository、通信、永続キャッシュを分け、データフローとプロトコル注入を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "検索と page/per_page を示したが、詳細 API・画面状態と次ページ終了条件を設計していない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "キャッシュとエラー再試行の UI はあるが、レート制限の解除時刻や再開条件を扱わない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "MockRepository、MockURLProtocol、UI テストを提案したが、キャッシュの鮮度等の設計上のトレードオフが薄い。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 18.578894999999648,
+          "ttft_seconds": 6.545805499999915,
+          "input_tokens": 95,
+          "output_tokens": 1953,
+          "prompt_tokens_per_second": 2048.561694052702,
+          "generation_tokens_per_second": 105.5068580268477,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "SwiftUI、ViewModel、Repository、通信、永続キャッシュを分け、データフローとプロトコル注入を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "検索と page/per_page を示したが、詳細 API・画面状態と次ページ終了条件を設計していない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "キャッシュとエラー再試行の UI はあるが、レート制限の解除時刻や再開条件を扱わない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "MockRepository、MockURLProtocol、UI テストを提案したが、キャッシュの鮮度等の設計上のトレードオフが薄い。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 18.561596100000315,
+          "ttft_seconds": 6.525419399999919,
+          "input_tokens": 95,
+          "output_tokens": 1953,
+          "prompt_tokens_per_second": 2045.6943517302268,
+          "generation_tokens_per_second": 105.62375616799179,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "SwiftUI、ViewModel、Repository、通信、永続キャッシュを分け、データフローとプロトコル注入を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "検索と page/per_page を示したが、詳細 API・画面状態と次ページ終了条件を設計していない。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "キャッシュとエラー再試行の UI はあるが、レート制限の解除時刻や再開条件を扱わない。"
+            },
+            {
+              "item": 4,
+              "rating": 0.5,
+              "reason": "MockRepository、MockURLProtocol、UI テストを提案したが、キャッシュの鮮度等の設計上のトレードオフが薄い。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "design-02",
+      "repeat": 3,
+      "elapsed_seconds": 21.452857600000243,
+      "ttft_seconds": 7.444738799999868,
+      "input_tokens": 94,
+      "output_tokens": 2266,
+      "prompt_tokens_per_second": 2033.9276441059374,
+      "generation_tokens_per_second": 106.03597498674552,
+      "score": 5.25,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 21.452857600000243,
+          "ttft_seconds": 7.451075599999967,
+          "input_tokens": 94,
+          "output_tokens": 2266,
+          "prompt_tokens_per_second": 2042.2795315792905,
+          "generation_tokens_per_second": 106.10465769934744,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "UI、ユースケース、DB、通信、OS 実行層を分け、進捗のストリームとジョブ構造を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "進捗・切断・再起動後の復元を扱ったが、キャンセルの永続状態がなく、OS タスクとの照合や iOS の強制終了時の制約が抜けている。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "安定した ID と同一応答という契約はあるが、同時処理の原子的な排除、完了状態の照会、チャンク再開の照合が不足する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "モック通信、DB 復元、切断、低速回線、メモリのテストを提案し、OS による実行時期の制約にも言及した。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 21.463502999999946,
+          "ttft_seconds": 7.444738799999868,
+          "input_tokens": 94,
+          "output_tokens": 2266,
+          "prompt_tokens_per_second": 2033.9276441059374,
+          "generation_tokens_per_second": 105.97106479959844,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "UI、ユースケース、DB、通信、OS 実行層を分け、進捗のストリームとジョブ構造を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "進捗・切断・再起動後の復元を扱ったが、キャンセルの永続状態がなく、OS タスクとの照合や iOS の強制終了時の制約が抜けている。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "安定した ID と同一応答という契約はあるが、同時処理の原子的な排除、完了状態の照会、チャンク再開の照合が不足する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "モック通信、DB 復元、切断、低速回線、メモリのテストを提案し、OS による実行時期の制約にも言及した。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 21.43276750000041,
+          "ttft_seconds": 7.4203284000004714,
+          "input_tokens": 94,
+          "output_tokens": 2266,
+          "prompt_tokens_per_second": 2031.773478871717,
+          "generation_tokens_per_second": 106.03597498674552,
+          "score": 5.25,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "UI、ユースケース、DB、通信、OS 実行層を分け、進捗のストリームとジョブ構造を示した。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "進捗・切断・再起動後の復元を扱ったが、キャンセルの永続状態がなく、OS タスクとの照合や iOS の強制終了時の制約が抜けている。"
+            },
+            {
+              "item": 3,
+              "rating": 0.5,
+              "reason": "安定した ID と同一応答という契約はあるが、同時処理の原子的な排除、完了状態の照会、チャンク再開の照合が不足する。"
+            },
+            {
+              "item": 4,
+              "rating": 1,
+              "reason": "モック通信、DB 復元、切断、低速回線、メモリのテストを提案し、OS による実行時期の制約にも言及した。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "reason-01",
+      "repeat": 3,
+      "elapsed_seconds": 20.953532399999858,
+      "ttft_seconds": 8.96700250000049,
+      "input_tokens": 67,
+      "output_tokens": 2113,
+      "prompt_tokens_per_second": 1658.9907393651265,
+      "generation_tokens_per_second": 101.14719210461877,
+      "score": 5.0,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 20.90584510000008,
+          "ttft_seconds": 8.96700250000049,
+          "input_tokens": 67,
+          "output_tokens": 2113,
+          "prompt_tokens_per_second": 1658.0054441969812,
+          "generation_tokens_per_second": 101.39042177359309,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "ナビゲーション完了と JS 初期化を区別するが、didFinish を HTML 取得だけの完了と説明し、async と defer の扱いも粗い。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Web Inspector、タイムライン、ブリッジログを挙げたが、readyState や呼び出し前の typeof、error の検査を具体化していない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "関数登録の完了点から JS が ready を送信し、Swift が通知を待つ案を提示した。"
+            },
+            {
+              "item": 4,
+              "rating": 0,
+              "reason": "冒頭でレースを根本原因と断定し、条件判定に問題のある固定 50 ms の再試行も修正案に含めた。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 20.953532399999858,
+          "ttft_seconds": 8.966754899999614,
+          "input_tokens": 67,
+          "output_tokens": 2113,
+          "prompt_tokens_per_second": 1658.9907393651265,
+          "generation_tokens_per_second": 101.10104398316668,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "ナビゲーション完了と JS 初期化を区別するが、didFinish を HTML 取得だけの完了と説明し、async と defer の扱いも粗い。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Web Inspector、タイムライン、ブリッジログを挙げたが、readyState や呼び出し前の typeof、error の検査を具体化していない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "関数登録の完了点から JS が ready を送信し、Swift が通知を待つ案を提示した。"
+            },
+            {
+              "item": 4,
+              "rating": 0,
+              "reason": "冒頭でレースを根本原因と断定し、条件判定に問題のある固定 50 ms の再試行も修正案に含めた。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 20.98498219999965,
+          "ttft_seconds": 9.019097499999589,
+          "input_tokens": 67,
+          "output_tokens": 2113,
+          "prompt_tokens_per_second": 1661.9948899858605,
+          "generation_tokens_per_second": 101.14719210461877,
+          "score": 5.0,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 0.5,
+              "reason": "ナビゲーション完了と JS 初期化を区別するが、didFinish を HTML 取得だけの完了と説明し、async と defer の扱いも粗い。"
+            },
+            {
+              "item": 2,
+              "rating": 0.5,
+              "reason": "Web Inspector、タイムライン、ブリッジログを挙げたが、readyState や呼び出し前の typeof、error の検査を具体化していない。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "関数登録の完了点から JS が ready を送信し、Swift が通知を待つ案を提示した。"
+            },
+            {
+              "item": 4,
+              "rating": 0,
+              "reason": "冒頭でレースを根本原因と断定し、条件判定に問題のある固定 50 ms の再試行も修正案に含めた。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "follow-01",
+      "repeat": 3,
+      "elapsed_seconds": 1.047452699999667,
+      "ttft_seconds": 0.9420242999995025,
+      "input_tokens": 48,
+      "output_tokens": 133,
+      "prompt_tokens_per_second": 1422.7280810955006,
+      "generation_tokens_per_second": 135.0941974995292,
+      "score": 10,
+      "evaluation_type": "independent",
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 1.0681924999998955,
+          "ttft_seconds": 0.9622061000000031,
+          "input_tokens": 48,
+          "output_tokens": 133,
+          "prompt_tokens_per_second": 1378.7556730051128,
+          "generation_tokens_per_second": 134.85818435931125,
+          "score": 10,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "回答全体を JSON オブジェクトとして解析できる。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "キーは status と retries のみ。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "status は文字列 ok、retries は整数 3。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 1.047452699999667,
+          "ttft_seconds": 0.9420242999995025,
+          "input_tokens": 48,
+          "output_tokens": 133,
+          "prompt_tokens_per_second": 1422.7280810955006,
+          "generation_tokens_per_second": 135.0941974995292,
+          "score": 10,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "回答全体を JSON オブジェクトとして解析できる。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "キーは status と retries のみ。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "status は文字列 ok、retries は整数 3。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 1.0434258000004775,
+          "ttft_seconds": 0.937550900000133,
+          "input_tokens": 48,
+          "output_tokens": 133,
+          "prompt_tokens_per_second": 1458.3903017044938,
+          "generation_tokens_per_second": 135.88383167699178,
+          "score": 10,
+          "evaluation_type": "independent",
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": 1,
+              "reason": "回答全体を JSON オブジェクトとして解析できる。"
+            },
+            {
+              "item": 2,
+              "rating": 1,
+              "reason": "キーは status と retries のみ。"
+            },
+            {
+              "item": 3,
+              "rating": 1,
+              "reason": "status は文字列 ok、retries は整数 3。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "creative-01",
+      "repeat": 3,
+      "elapsed_seconds": 33.19812229999934,
+      "ttft_seconds": 12.020977400000447,
+      "input_tokens": 81,
+      "output_tokens": 3835,
+      "prompt_tokens_per_second": 1782.6488841938462,
+      "generation_tokens_per_second": 115.79545436698666,
+      "score": null,
+      "evaluation_type": null,
+      "status": "completed",
+      "repetitions": [
+        {
+          "elapsed_seconds": 33.201289100000395,
+          "ttft_seconds": 12.020977400000447,
+          "input_tokens": 81,
+          "output_tokens": 3835,
+          "prompt_tokens_per_second": 1804.2500111373458,
+          "generation_tokens_per_second": 115.71618676592546,
+          "score": null,
+          "evaluation_type": null,
+          "status": "completed",
+          "number": 1,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": null,
+              "reason": "モジュールの JavaScript 構文は検査済み。Chrome/WebGL での動作は未測定。"
+            },
+            {
+              "item": 2,
+              "rating": 16,
+              "reason": "5層の塔、池、桜、岩、ボクセル表現を実装したが、色分け・造形の細部は限定的。"
+            },
+            {
+              "item": 3,
+              "rating": null,
+              "reason": "ブラウザでの描画と見た目は未測定。"
+            },
+            {
+              "item": 4,
+              "rating": 8,
+              "reason": "インスタンス化した庭と視点操作を組み合わせた。地形・屋根・樹冠の構造は単純。"
+            },
+            {
+              "item": 5,
+              "rating": 7,
+              "reason": "カメラ、照明、リサイズを実装。再現性のない乱数、未使用の色変数、幹と花の色が同一という弱点がある。"
+            },
+            {
+              "item": 6,
+              "rating": 5,
+              "reason": "完結した HTML が1つ。Three.js はバージョンを固定した外部 CDN を参照する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 33.167046200000186,
+          "ttft_seconds": 12.01208670000051,
+          "input_tokens": 81,
+          "output_tokens": 3835,
+          "prompt_tokens_per_second": 1778.7733052243232,
+          "generation_tokens_per_second": 115.90370898821777,
+          "score": null,
+          "evaluation_type": null,
+          "status": "completed",
+          "number": 2,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": null,
+              "reason": "モジュールの JavaScript 構文は検査済み。Chrome/WebGL での動作は未測定。"
+            },
+            {
+              "item": 2,
+              "rating": 16,
+              "reason": "5層の塔、池、桜、岩、ボクセル表現を実装したが、色分け・造形の細部は限定的。"
+            },
+            {
+              "item": 3,
+              "rating": null,
+              "reason": "ブラウザでの描画と見た目は未測定。"
+            },
+            {
+              "item": 4,
+              "rating": 8,
+              "reason": "インスタンス化した庭と視点操作を組み合わせた。地形・屋根・樹冠の構造は単純。"
+            },
+            {
+              "item": 5,
+              "rating": 7,
+              "reason": "カメラ、照明、リサイズを実装。再現性のない乱数、未使用の色変数、幹と花の色が同一という弱点がある。"
+            },
+            {
+              "item": 6,
+              "rating": 5,
+              "reason": "完結した HTML が1つ。Three.js はバージョンを固定した外部 CDN を参照する。"
+            }
+          ]
+        },
+        {
+          "elapsed_seconds": 33.19812229999934,
+          "ttft_seconds": 12.031638599999496,
+          "input_tokens": 81,
+          "output_tokens": 3835,
+          "prompt_tokens_per_second": 1782.6488841938462,
+          "generation_tokens_per_second": 115.79545436698666,
+          "score": null,
+          "evaluation_type": null,
+          "status": "completed",
+          "number": 3,
+          "rubric_items": [
+            {
+              "item": 1,
+              "rating": null,
+              "reason": "モジュールの JavaScript 構文は検査済み。Chrome/WebGL での動作は未測定。"
+            },
+            {
+              "item": 2,
+              "rating": 16,
+              "reason": "5層の塔、池、桜、岩、ボクセル表現を実装したが、色分け・造形の細部は限定的。"
+            },
+            {
+              "item": 3,
+              "rating": null,
+              "reason": "ブラウザでの描画と見た目は未測定。"
+            },
+            {
+              "item": 4,
+              "rating": 8,
+              "reason": "インスタンス化した庭と視点操作を組み合わせた。地形・屋根・樹冠の構造は単純。"
+            },
+            {
+              "item": 5,
+              "rating": 7,
+              "reason": "カメラ、照明、リサイズを実装。再現性のない乱数、未使用の色変数、幹と花の色が同一という弱点がある。"
+            },
+            {
+              "item": 6,
+              "rating": 5,
+              "reason": "完結した HTML が1つ。Three.js はバージョンを固定した外部 CDN を参照する。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "startup_seconds": null,
+  "local_runner_commit": "76deac52ea6b6768fe78c1eb2ccb44b70e23908d",
+  "evaluation": {
+    "type": "independent",
+    "evaluator": "OpenAI Codex",
+    "evaluator_model_version": null,
+    "rubric": "rubrics/v0.1.0.md",
+    "method": "回答本文を目視で評価し、JSON 指定は構文・値・型も検証。生成コードのビルドや実行は未実施。バイト一致する回答は同じ基準・根拠で採点。"
+  },
+  "quality_total": 68.375
+}
