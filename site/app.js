@@ -24,7 +24,17 @@ fetch('data.json').then(r=>{if(!r.ok)throw Error('data');return r.json()}).then(
    const meter=document.createElement('meter');meter.min=0;meter.max=max;meter.value=r.speed;meter.setAttribute('aria-label',label.textContent);
    const value=document.createElement('span');value.textContent=fmt(r.speed)+' tok/s';line.append(label,meter,value);bars.append(line);
   }
-  for(const r of runs){const tr=document.createElement('tr');for(const value of [r.model,r.quantization,r.gpu,r.runtime,r.scored+' / '+r.total,fmt(r.score),fmt(r.creative),fmt(r.speed),r.id]){const td=document.createElement('td');td.textContent=value??'—';tr.append(td)} rows.append(tr)}
+  for(const r of runs){
+   const tr=document.createElement('tr');
+   for(const value of [r.model,r.quantization,r.gpu,r.runtime,r.scored+' / '+r.total,fmt(r.score),fmt(r.creative),fmt(r.speed)]){
+    const td=document.createElement('td');td.textContent=value??'—';tr.append(td);
+   }
+   const link=document.createElement('a');
+   link.href='run.html?'+new URLSearchParams({version:r.version,id:r.id});
+   link.textContent='詳細';
+   link.setAttribute('aria-label',r.model+' の詳細（'+r.id+'）');
+   const td=document.createElement('td');td.append(link);tr.append(td);rows.append(tr);
+  }
  }
  select.addEventListener('change',render);sort.addEventListener('change',render);search.addEventListener('input',render);render();
 }).catch(()=>{status.textContent='データの読み込みに失敗しました'});
