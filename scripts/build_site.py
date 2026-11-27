@@ -10,8 +10,8 @@ for name in ("index.html", "app.js"):
 versions = sorted(p.name[1:] for p in (root / "benchmarks").glob("v*/manifest.json") for p in [p.parent])
 runs = []
 for p in sorted((root / "results").glob("v*/*/result.json")):
-    d = json.loads(p.read_text())
-    manifest = json.loads((root / "benchmarks" / ("v" + d["benchmark_version"]) / "manifest.json").read_text())
+    d = json.loads(p.read_text(encoding="utf-8"))
+    manifest = json.loads((root / "benchmarks" / ("v" + d["benchmark_version"]) / "manifest.json").read_text(encoding="utf-8"))
     weights = {c["id"]: c["weight"] for c in manifest["cases"]}
     # Only independently evaluated scores enter the quality summary.
     scored = [c for c in d["cases"] if c.get("evaluation_type") == "independent" and c.get("score") is not None and weights[c["case_id"]] > 0]
