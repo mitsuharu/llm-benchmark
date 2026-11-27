@@ -41,9 +41,11 @@ def doctor(submit=False):
     print(json.dumps(checks, ensure_ascii=False, indent=2))
     return 0 if not submit or ready else 1
 
-def measure(base_url, model, prompt, timeout, temperature, max_tokens):
+def measure(base_url, model, prompt, timeout, temperature, max_tokens, include_usage=False):
     payload = {"model": model, "messages": [{"role": "user", "content": prompt}],
                "stream": True, "temperature": temperature, "max_tokens": max_tokens}
+    if include_usage:
+        payload["stream_options"] = {"include_usage": True}
     headers = {"Content-Type": "application/json"}
     if os.environ.get("BENCHMARK_API_KEY"):
         headers["Authorization"] = "Bearer " + os.environ["BENCHMARK_API_KEY"]
@@ -162,7 +164,7 @@ def run_cases(args):
         runner_version="0.2.0", model=args.model, quantization=args.quantization, gpu=args.gpu,
         runtime=args.runtime, runtime_version=args.runtime_version, backend=args.backend,
         environment=detect(), environment_scope="runner_host",
-        settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens, "gpu_layers": args.gpu_layers if args.server_binary or args.auto_prepare else None}, cases=[], startup_seconds=getattr(args, "startup_seconds", None))
+        settings={"temperature": args.temperature, "context_length": args.context_length, "max_tokens": args.max_tokens, "include_usage": args.include_usage, "gpu_layers": args.gpu_layers if args.server_binary or args.auto_prepare else None}, cases=[], startup_seconds=getattr(args, "startup_seconds", None))
     if args.model_file:
         with args.model_file.open("rb") as stream:
             digest = hashlib.sha256()
@@ -173,7 +175,7 @@ def run_cases(args):
         prompt = (folder / case["prompt"]).read_text(encoding="utf-8")
         rows = []
         for i in range(args.repeat):
-            answer, row = bounded_measure(args.base_url, args.model, prompt, case["time_limit_seconds"] or args.timeout, args.temperature, args.max_tokens)
+            answer, row = bounded_measure(args.base_url, args.model, prompt, case["time_limit_seconds"] or args.timeout, args.temperature, args.max_tokens, args.include_usage)
             (out / f"{case['id']}-{i+1}.md").write_text(answer, encoding="utf-8")
             rows.append(row)
             (out / f"{case['id']}-repeats.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
@@ -209,6 +211,7 @@ def main():
     r.add_argument("--temperature", type=float, default=0)
     r.add_argument("--context-length", type=int)
     r.add_argument("--max-tokens", type=int, default=8192)
+    r.add_argument("--include-usage", action="store_true", help="request token usage in the streamed response")
     r.add_argument("--timeout", type=float, default=300)
     r.add_argument("--version")
     r.add_argument("--repeat", type=int, default=3)
